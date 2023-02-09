@@ -30,8 +30,8 @@ return numPoints;
 // This method returns a number of type double that is the calculated average of all the sides’ lengths in the Shape S.
     public double getAverageLength(Shape s) {
         // Put code here
-   
-        return numPoints;
+   double averageLength = getPerimeter(s)/getNumPoints(s);
+    return averageLength;
     }
 
     public double getLargestSide(Shape s) {
@@ -60,8 +60,10 @@ return numPoints;
         Shape s = new Shape(fr);
         double length = getPerimeter(s);
         int points = getNumPoints(s);
+        double averageLength = getAverageLength(s);
         System.out.println("perimeter = " + length);
         System.out.println("numPoints = " + points);
+        System.out.println("average length = " + averageLength);
     }
     
     public void testPerimeterMultipleFiles() {
