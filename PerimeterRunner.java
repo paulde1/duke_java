@@ -29,14 +29,23 @@ return numPoints;
 }
 // This method returns a number of type double that is the calculated average of all the sides’ lengths in the Shape S.
     public double getAverageLength(Shape s) {
-        // Put code here
    double averageLength = getPerimeter(s)/getNumPoints(s);
     return averageLength;
     }
 
     public double getLargestSide(Shape s) {
-        // Put code here
-        return 0.0;
+        double largestSide = 0;
+        // Start wth prevPt = the last point 
+        Point prevPt = s.getLastPoint();
+        // For each point currPt in the shape,
+        for (Point currPt : s.getPoints()) {
+            // Find distance from prevPt point to currPt 
+            double currDist = prevPt.distance(currPt);  
+            if(currDist > largestSide){
+                largestSide = currDist;
+            }
+        }
+        return largestSide;
     }
 
     public double getLargestX(Shape s) {
@@ -61,9 +70,11 @@ return numPoints;
         double length = getPerimeter(s);
         int points = getNumPoints(s);
         double averageLength = getAverageLength(s);
+        double largestSide = getLargestSide(s);
         System.out.println("perimeter = " + length);
         System.out.println("numPoints = " + points);
         System.out.println("average length = " + averageLength);
+        System.out.println("largest side = " + largestSide);
     }
     
     public void testPerimeterMultipleFiles() {
