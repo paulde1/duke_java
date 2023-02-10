@@ -60,9 +60,20 @@ return numPoints;
         return largestX;
     }
 
+    //for (Point p : s.getPoints()) {
+    // if (p.getX() > 0) {
+      
+    //     if (p.getY() < 0) {
+    //       tmp = tmp + 1;
+    //     }
+    //   }
+    // }
+    // return tmp / getNumPoints(s);   
+
     public double getLargestPerimeterMultipleFiles() {
-        // Put code here
-        return 0.0;
+        FileResource fr = new FileResource(f);
+
+    return 0.0;
     }
 
     public String getFileWithLargestPerimeter() {
