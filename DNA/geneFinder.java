@@ -4,19 +4,63 @@ import java.io.*;
 
 public class GeneFinderAndTester {
     public String findGeneSimple(String dna) {
-        String result = '';
+        String result = 'invalid sequence';
         int startIndex = dna.indexOf('ATG');
-		if(startIndex > -1){
-			 int endIndex = dna.lastIndexOf('TAA');
-        //int endIndex = dna.indexof('TAA', startIndex + 3); 
+        int endIndex = dna.indexOf('TAA', startIndex + 3); 
+		if(startIndex > -1 || endIndex > -1) {
+				if ((startIndex - endIndex) % 3 == 0) {
+// 			return dna.substring(start, stop+3);
+// 		}
         result = dna.substring(startIndex, endIndex + 3);
-        return result;
-		}else {
-			return result;
 		}
+		return result;
     }
 }
 
+
+public String findGene (String dna) {
+	dna = dna.toLowercase();
+	int startIndex = dna.indexOf('dna');
+	int currentIndex = dna.indexOf('TAA', startIndex + 3);
+	while (currentIndex != -1 ) {
+		if((currentIndex - startIndex) % 3 == 0) {
+			return dna.substring(startIndex, currentIndex + 3);
+		}else {
+			currentIndex = dna.indexOf('TAA', currentIndex + 1);
+		}
+	}
+	return ''
+}
+
+public int findStopCodon(String dna, int startIndex, String stopCodon) {
+	int currIndex = dna.indexof(stopCodon, startIndex + 3);
+	while( currIndex != -1 ) {
+		int diff = currIndex - startIndex;
+		if( diff % 3 == 0 ) {
+			return currIndex;
+	} else {
+		currIndex = dna.indexOf(stopCodon)
+	}
+}
+
+public String findTheGene (String dna) {
+	int startIndex = dna.indexOf('ATG');
+	if(startIndex == -1) {
+		return ''
+	}
+
+	int taaIndex = findStopCodon(dna, startIndex, 'TAA');
+	int tagIndex = findStopCodon(dna, startIndex, 'TAG');
+	int tgaIndex = findStopCodon(dna, startIndex, 'TGA');
+
+	int temp = Math.min(taaIndex, tagIndex);
+	int min = Math.min(temp,tgaIndex);
+
+	if( min == dna.length()){
+		return ''
+	}
+	return dna.substring(startIndex, min + 3 );
+}
 
 public void testGeneFinder(){
     String sample = 'AATGCGTAATATGGT';
@@ -34,38 +78,7 @@ public void testGeneFinder(){
     gene = geneFinder(sample);
     System.out.println("The gene is " + gene);
 }
-
-
-public class TagFinder {
-	public String findProtein(String dna) {
-		int start = dna.indexOf("atg");
-		if (start == -1) {
-			return "";
-		}
-		int stop = dna.indexOf("tag", start+3);
-		if ((stop - start) % 3 == 0) {
-			return dna.substring(start, stop+3);
-		}
-		else {
-			return "";
-		}
-	}
-	
-	public void testing() {
-		String a = "cccatggggtttaaataataataggagagagagagagagttt";
-		String ap = "atggggtttaaataataatag";
-		//String a = "atgcctag";
-		//String ap = "";
-		//String a = "ATGCCCTAG";
-		//String ap = "ATGCCCTAG";
-		String result = findProtein(a);
-		if (ap.equals(result)) {
-			System.out.println("success for " + ap + " length " + ap.length());
-		}
-		else {
-			System.out.println("mistake for input: " + a);
-			System.out.println("got: " + result);
-			System.out.println("not: " + ap);
-		}
-	}
 }
+
+
+	
