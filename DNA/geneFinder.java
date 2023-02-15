@@ -45,6 +45,18 @@ public String findTheGene (String dna) {
 	}
 	return dna.substring(startIndex, min + 3 );
 }
+public void printAllGenes (String dna) {
+	int start = 0;
+	while ( true) {
+		String currentGene = findTheGene(dna,start);
+		if(currentGene.isEmpty()) {
+			break;
+		}
+	}
+	System.out.println(currentGene)
+	start = dna.indexOf(currentGene,start)+ currentGene.length();
+}
+
 public void testStopCodon () {
 	String dna = 'tffffgssfvsfdvsdTAAdtgrdgdfggdgggrTAAuu';
 	int test = findStopCodon(dna, 0, 'TAA');
