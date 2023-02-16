@@ -107,3 +107,8 @@ System.out.println(count);
     break;
   }
 }
+
+StorageResource resource = getData();
+for (String s : resource.data()){
+  System.out.println(s);
+}
