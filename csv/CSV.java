@@ -6,8 +6,9 @@ public class CSV {
         FileResource fr = new FileResource();
         CSVParser parser = fr.get CSVParser();
         for(CSVRecord record : parser) {
-            System.out.print(record.get("name"));
-             System.out.println(record.get("Favorite food"));
+            System.out.print(record.get("name") + " ");
+             System.out.print(record.get("Favorite color "));
+             System.out.println(record.get("Favorite food "));
         };
     };
 };
