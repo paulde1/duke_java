@@ -7,11 +7,16 @@ public class WhichCountriesExport {
             //check the exports column contains exports
             //if true print country from row 
             for(CSVRecord record : parser){
-                String export = record.get('Exports');
+                String export = record.get("Exports");
                 if(export.contains(exportsOfInterests)) {
-                    String country = record.get('Country');
-                    System.out.println(country)
+                    String country = record.get("Country");
+                    System.out.println(country);
                 }
             }
+    }
+    public  void whoExportsCoffee () {
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        listExporters(parser,"coffee");
     }
 }
