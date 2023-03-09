@@ -22,7 +22,20 @@ public class findSimpleGene {
         }
         return "";
     }
+    public int howMany(String stringa, String stringb) {
+        int count = 0;
+        int index = stringb.indexOf(stringa);
+        while(index >= 0) {
+            index = stringb.indexOf(stringa, index + stringa.length());
+            count++;
+        }
+        return count; 
+    }
     
+    public void testHowMany() {
+        System.out.println(howMany("GAA", "ATGAACGAATTGAATC"));
+        System.out.println(howMany("AA", "ATAAAA"));
+    }
     public void testGene() {
         String dna = "CGTGATTCTAATG"; //prints empty string has no ATG
         System.out.println("DNA strand is " + dna);
