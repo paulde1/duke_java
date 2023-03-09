@@ -1,12 +1,19 @@
 package classA.DNA;
 
 public class findSimpleGene {
-     public String findGene(String dna) {
-        int startCodon = dna.indexOf("ATG");
+     public String findGene(String dna, int startCodon, int stopCodon) {
+        for (int i = 0; i < dna.length(); i++) {
+            if(Character.isUpperCase(dna.charAt(i))) {
+                startCodon = dna.indexOf("ATG");
+                stopCodon = dna.indexOf("TAA", startCodon + 3 );
+            } else {
+                startCodon = dna.indexOf("atg");
+                stopCodon = dna.indexOf("taa", startCodon + 3 );
+            }
+        }
         if(startCodon == -1) {
             return "";
         }
-        int stopCodon = dna.indexOf("TAA", startCodon + 3 );
         if(stopCodon == -1) {
             return "";
         }
@@ -16,40 +23,35 @@ public class findSimpleGene {
         return "";
     }
     
-    public void testSimpleGene() {
+    public void testGene() {
         String dna = "CGTGATTCTAATG"; //prints empty string has no ATG
         System.out.println("DNA strand is " + dna);
-        String gene = findGene(dna);
+        String gene = findGene(dna, 0, 12);
         System.out.println("Gene is " + gene);
         
         dna = "CGATGAAATGCTG"; //prints empty string has no TAA
         System.out.println("DNA strand is " + dna);
-        gene = findGene(dna);
+        gene = findGene(dna, 2, 5);
         System.out.println("Gene is " + gene);
         
         dna = "CGAAATGCTG"; //prints empty string has no ATG or TAA
         System.out.println("DNA strand is " + dna);
-        gene = findGene(dna);
+        gene = findGene(dna, 5, 7);
         System.out.println("Gene is " + gene);
         
         dna = "TGCATGTTTCTGTAATG"; //prints ATGTTTCTGTAA
         System.out.println("DNA strand is " + dna);
-        gene = findGene(dna);
+        gene = findGene(dna, 0, 15);
+        System.out.println("Gene is " + gene);
+        
+        dna = "gatgctataat"; //prints atgctataa
+        System.out.println("DNA strand is " + dna);
+        gene = findGene(dna, 0, 15);
         System.out.println("Gene is " + gene);
         
         dna = "TGCATGTTCTGTAATG"; //prints empty string not multiple of 3
         System.out.println("DNA strand is " + dna);
-        gene = findGene(dna);
-        System.out.println("Gene is " + gene);
-        
-        dna = "AAATGCCCTAACTAGATTAAGAAACC"; //prints ATGCCCTAA
-        System.out.println("DNA strand is " + dna);
-        gene = findGene(dna);
-        System.out.println("Gene is " + gene);
-        
-        dna = "AAATGCCCCTGTGCGGTTAACTAGATTAAGAAACC"; //prints ATGCCCCTGTGCGGTTAA
-        System.out.println("DNA strand is " + dna);
-        gene = findGene(dna);
+        gene = findGene(dna, 0, 10);
         System.out.println("Gene is " + gene);
     }
 }
