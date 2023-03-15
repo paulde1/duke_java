@@ -7,13 +7,30 @@ public class CaesarCipher {
 	private String shiftedAlphabet;
 	private int mainKey;
 		
+<<<<<<< HEAD
 	public String CaesarCipher(int key){
+=======
+<<<<<<< HEAD
+	public CeasarCipher(int key){
+=======
+	public String CaesarCipher(int key){
+>>>>>>> 5941373 (second cipher)
+>>>>>>> 104ac0f ( created second cipher)
 		mainKey = key;
 		alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		shiftedAlphabet = alphabet.substring(key)+alphabet.substring(0,key);
 	}
+<<<<<<< HEAD
 	
     public String encrypt(String input) {
+=======
+<<<<<<< HEAD
+
+=======
+	
+    public String encrypt(String input) {
+>>>>>>> 5941373 (second cipher)
+>>>>>>> 104ac0f ( created second cipher)
 	
 		StringBuilder encrypted = new StringBuilder(input);
 
