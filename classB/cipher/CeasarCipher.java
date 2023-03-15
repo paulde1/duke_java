@@ -1,5 +1,4 @@
-package classB;
-import java.io.File;
+package cipher;
 import edu.duke.FileResource;
 
 public class CaesarCipher {
@@ -7,17 +6,14 @@ public class CaesarCipher {
 	private String alphabet;
 	private String shiftedAlphabet;
 	private int mainKey;
-	
-	public CaesarCipher(){}
-	
-	public CaesarCipher(int key){
+		
+	public String CaesarCipher(int key){
 		mainKey = key;
 		alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		shiftedAlphabet = alphabet.substring(key)+alphabet.substring(0,key);
 	}
 	
-	//OO Version
-	public String encrypt(String input) {
+    public String encrypt(String input) {
 	
 		StringBuilder encrypted = new StringBuilder(input);
 
