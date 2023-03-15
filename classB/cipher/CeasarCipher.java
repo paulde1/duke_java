@@ -1,23 +1,18 @@
-package classB;
-import java.io.File;
+package cipher;
 import edu.duke.FileResource;
 
-public class CaesarCipher {
+public class CeasarCipher {
 	
 	private String alphabet;
 	private String shiftedAlphabet;
 	private int mainKey;
-	
-	public CaesarCipher(){}
-	
-	public CaesarCipher(int key){
+		
+	public CeasarCipher(int key){
 		mainKey = key;
 		alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		shiftedAlphabet = alphabet.substring(key)+alphabet.substring(0,key);
 	}
-	
-	//OO Version
-	public String encrypt(String input) {
+
 	
 		StringBuilder encrypted = new StringBuilder(input);
 
@@ -45,7 +40,7 @@ public class CaesarCipher {
 	}
 	
 	public String decrypt(String input){
-		CaesarCipher cc = new CaesarCipher(26-mainKey);
+		CeasarCipher cc = new CeasarCipher(26-mainKey);
 		return cc.encrypt(input);
 	}
 	
