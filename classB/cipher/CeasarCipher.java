@@ -1,8 +1,5 @@
-package classB.CeasarCipher;
-import edu.duke.*;
+package classB;
 import java.io.File;
-
-
 import edu.duke.FileResource;
 
 public class CaesarCipher {
