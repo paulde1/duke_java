@@ -15,7 +15,6 @@ private int key;
 		alphabetLow = "abcdefghijklmnopqrstuvwxyz";	
 		shiftedAlphabetUp = alphabetUp.substring(key) + alphabetUp.substring(0,key);
 		shiftedAlphabetLow = alphabetLow.substring(key) + alphabetLow.substring(0,key);
-		
 	}
 	
 	public String encrypt(String input){
@@ -114,12 +113,12 @@ private int key;
 		String encrypted2 = cc2.encrypt(subStr2);
 				
 		String encrypted = cc1.CombineString(encrypted1,encrypted2);
-		System.out.println("加密后：" + encrypted);
+		System.out.println("hello moto" + encrypted);
 		//decryption
 		int dKey1 = cc1.getKey(encrypted1);
 		int dKey2 = cc2.getKey(encrypted2);
-		System.out.println("预测密钥1：" + dKey1);
-		System.out.println("预测密钥2：" + dKey2);
+		System.out.println("timmy turner" + dKey1);
+		System.out.println(" bobby boy：" + dKey2);
 
 		
 //		int dKey1 = 14;

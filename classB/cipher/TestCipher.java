@@ -1,6 +1,6 @@
-
 package cipher;
 import edu.duke.FileResource;
+
 
 public class TestCipher {
 	
@@ -16,7 +16,7 @@ public class TestCipher {
 		}
 		return counts;
 	}
-	
+
 	private int maxIndex(int[] freqs){
 		int max = 0;
 		int pos = 0;
