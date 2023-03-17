@@ -57,7 +57,6 @@ public class GladLibs {
     
     private String getSubstitute(String label) {
         
-        /* 
          if (label.equals("country")) {
             return randomFrom(countryList);
         }
@@ -85,7 +84,6 @@ public class GladLibs {
         if (label.equals("fruit")){
             return randomFrom(fruitList);
         }
-        */
         if (label.equals("number")){
             return ""+myRandom.nextInt(50)+5;
         }
