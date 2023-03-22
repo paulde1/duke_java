@@ -1,5 +1,6 @@
 import edu.duke.*;
 import java.util.*;
+import java.io.*;
 
 public class GladLibs {
   private ArrayList<String> wordSeen;
@@ -10,14 +11,14 @@ public class GladLibs {
     private static String dataSourceURL = "http://dukelearntoprogram.com/course3/data";
     private static String dataSourceDirectory = "datalong";
     
-    public GladLibMap() {
+    public void GladLibMap() {
         initializeFromSource(dataSourceDirectory);
         myRandom = new Random();
         wordSeen = new ArrayList<String>();
         usedCategories = new ArrayList<String>();
     }
     
-    public GladLibMap(String source) {
+    public void GladLibMap(String source) {
         initializeFromSource(source);
         // create a random number generator
         wordSeen = new ArrayList<String>();
@@ -27,20 +28,20 @@ public class GladLibs {
     
     private void initializeFromSource(String source) {
         
-        adjectiveList= readIt(source+"/adjective.txt"); 
-        nounList = readIt(source+"/noun.txt");
-        colorList = readIt(source+"/color.txt");
-        countryList = readIt(source+"/country.txt");
-        nameList = readIt(source+"/name.txt");      
-        animalList = readIt(source+"/animal.txt");
-        timeList = readIt(source+"/timeframe.txt");
-        verbList = readIt(source+"/verb.txt");
-        fruitList = readIt(source+"/fruit.txt");
+        ArrayList<String> adjectiveList = readIt(source+"/adjective.txt"); 
+        ArrayList<String> nounList = readIt(source+"/noun.txt");
+        ArrayList<String> colorList = readIt(source+"/color.txt");
+        ArrayList<String> countryList = readIt(source+"/country.txt");
+        ArrayList<String> nameList = readIt(source+"/name.txt");      
+        ArrayList<String> animalList = readIt(source+"/animal.txt");
+        ArrayList<String> timeList = readIt(source+"/timeframe.txt");
+        ArrayList<String> verbList = readIt(source+"/verb.txt");
+        ArrayList<String> fruitList = readIt(source+"/fruit.txt");
         String[] labels = {"adjective","animal","color","country","fruit","name","noun","timeframe","verb"};
         for(String s : labels){
             ArrayList<String> list = readIt(source+"/"+s+".txt");
             myMap.put(s, list);
-           // System.out.println("HashMap values"+myMap.get(s));
+           System.out.println("HashMap values"+myMap.get(s));
         }
     }
     
@@ -216,4 +217,3 @@ public class GladLibs {
 
 }
     
-}
