@@ -1,36 +1,28 @@
 package cipher;
 import edu.duke.FileResource;
 
-public class CaesarCipher {
+public class CeasarCipher {
 	
 	private String alphabet;
 	private String shiftedAlphabet;
 	private int mainKey;
 		
-<<<<<<< HEAD
+
 	public String CaesarCipher(int key){
-=======
-<<<<<<< HEAD
+
+	public String CaesarCipher(int key){
+
 	public CeasarCipher(int key){
-=======
-	public String CaesarCipher(int key){
->>>>>>> 5941373 (second cipher)
->>>>>>> 104ac0f ( created second cipher)
 		mainKey = key;
 		alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		shiftedAlphabet = alphabet.substring(key)+alphabet.substring(0,key);
 	}
-<<<<<<< HEAD
-	
-    public String encrypt(String input) {
-=======
-<<<<<<< HEAD
 
-=======
 	
     public String encrypt(String input) {
->>>>>>> 5941373 (second cipher)
->>>>>>> 104ac0f ( created second cipher)
+
+	
+    public String encrypt(String input) {
 	
 		StringBuilder encrypted = new StringBuilder(input);
 
@@ -58,7 +50,7 @@ public class CaesarCipher {
 	}
 	
 	public String decrypt(String input){
-		CaesarCipher cc = new CaesarCipher(26-mainKey);
+		CeasarCipher cc = new CeasarCipher(26-mainKey);
 		return cc.encrypt(input);
 	}
 	
