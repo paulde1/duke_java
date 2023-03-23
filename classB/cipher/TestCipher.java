@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-
-package cipher;
-import edu.duke.FileResource;
-
-=======
 package cipher;
 import edu.duke.FileResource;
 
 
->>>>>>> ef3157c5460090a72611074ba76e5f352715771a
 public class TestCipher {
 	
 	private int[] countLetters(String message){
@@ -23,11 +16,6 @@ public class TestCipher {
 		}
 		return counts;
 	}
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> ef3157c5460090a72611074ba76e5f352715771a
 	private int maxIndex(int[] freqs){
 		int max = 0;
 		int pos = 0;

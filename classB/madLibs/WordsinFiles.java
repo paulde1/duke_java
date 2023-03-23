@@ -1,148 +1,103 @@
-package madLibs;
-
 import edu.duke.*;
-import java.util.*;
-import java.lang.*;
-import java.io.*;
 
-public class WordsinFiles {
-    
-    private HashMap<String,ArrayList<String>> word_filename;
-    //private FileResource fr = new FileResource();
-    //private ArrayList<String> myWords; 
-   
-    public WordsinFiles(){
-     word_filename = new HashMap<String, ArrayList<String>>();
-     //myWords = new ArrayList<String>();
-    }
-    
-    
-    /*
-     * Write a private void method named addWordsFromFile that has one
-     * parameter f of type File.This method should add all the words from
-     * f into the map.If a word is not in the map, then you must create
-     * a new ArrayList of type String with this word, and have the word map
-     * to this ArrayList.If a word is already in the map, then add the current
-     * filename to its ArrayList, unless the filename is already in the 
-     * ArrayList. You can use the File method getName to get the filename of 
-     * a file
-     */
-    
-    private void addWordsFromFile(File f){
-        FileResource fileResource = new FileResource(f);
-        String name = f.getName();
-        //ArrayList<String> myWords = new ArrayList<String>();
-        
-        for(String word:fileResource.words()){
-            word = word.toLowerCase();
-            if(!word_filename.containsKey(word)){     
-                ArrayList<String> newArrayList = new ArrayList<String>();
-                newArrayList.add(name);
-                // For each word there is an ArrayList which contains files
-                //where the word is. 
-                word_filename.put(word, newArrayList);
-            }
-                    
-            else if (word_filename.containsKey(word) && 
-                !word_filename.get(word).contains(name)) {
-                // Add another file to the ArrayList when the word already exists.   
-                ArrayList<String> currentFileNameList = word_filename.get(word);
-                currentFileNameList.add(name);
-                word_filename.put(word, currentFileNameList);
-                 }                                   
-                  }
-                                                
-            }
-                                                   
-                                                      
-    /*
-     * Write a void method named buildWordFileMap that has no parameters.
-     * This method first clears the map, and then uses a DirectoryResource
-     * to select a group of files.Foir each file,it puts all of its words
-     * the map by calling the method addWordsFromFile. The remaining methods
-     * to write all assume that the HashMap has been built.
-     */
-    
-    public void buildWordFileMap(){
-        word_filename.clear(); 
-        DirectoryResource dr = new DirectoryResource();
-        for(File f : dr.selectedFiles()){
-            addWordsFromFile(f);
-        }
-    }
-    
-    /*
-     * Write the method maxNumber that has no parameters.This method returns 
-     * the maximum number of files any word appears in, considering all words
-     * from a group of files.In the example above, there are four files 
-     * considered. No word appears in all four files.Two words appear in three
-     * of the files, so maxNumber on those four files would return 3. 
-     * This method assumes that the HashMap has already been constructed.
-     */
-    public int maxNumber(){        
-       // The hasMap has been built
-       int max = 0;
-       for(String word:word_filename.keySet()){
-            ArrayList<String> currentFileList = word_filename.get(word);
-            int currentNum = currentFileList.size();
-            if (currentNum > max) {
-                max = currentNum;
-            }
-        }
-        return max;
-    }
-    
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-    
-    private ArrayList<String> wordsInNumFiles(int number){
-        // Same idea than maxNumber()
-        ArrayList<String> ReturnList = new ArrayList<String>();
-        for(String word:word_filename.keySet()){
-            ArrayList<String> currentFileList = word_filename.get(word);
-            int currentNum = currentFileList.size();
-            if (currentNum == number) {
-                ReturnList.add(word);
-            }
-        
-        }
-        return ReturnList;
-    
+class WordsInFiles {
+    private HashMap<String, ArrayList<String>> wordInFilesMap;
+
+    public WordsInFiles() {
+        wordInFilesMap = new HashMap<String, ArrayList<String>>();
     }
-    
-    /*
-     * Write the void method printFilesIn that has one String parameter named
-     * word.This method prints the names of the files this word appears in,one
-     * filename per line. For example, in the example above, the call
-     * printFilesIn("cats") would print the three filenames: brief1.txt, 
-     * brief3.txt and brief4.txt, each on a separate line.
-     */
-    
-    private void printFilesIn(String word){
-        ArrayList<String> fileNames = word_filename.get(word);
+
+    private void addWordsFromFile(File file) {
+        //This method should add all the words from file into the map.
+        //If a word is not in the map, then you must create a new ArrayList of
+        // type String with this word, and have the word map to this ArrayList.
+        //If a word is already in the map, then add the current filename to its
+        // ArrayList, unless the filename is already in the ArrayList.
+        FileResource fileResource = new FileResource(file);
+        String fileName = file.getName();
+        for (String word : fileResource.words()) {
+            if (!wordInFilesMap.containsKey(word)) {
+                ArrayList<String> newList = new ArrayList<String>();
+                newList.add(fileName);
+                wordInFilesMap.put(word, newList);
+            } else if (wordInFilesMap.containsKey(word)
+                    && !wordInFilesMap.get(word).contains(fileName)) {
+                ArrayList<String> currentList = wordInFilesMap.get(word);
+                currentList.add(fileName);
+                wordInFilesMap.put(word, currentList);
+            }
+        }
+    }
+
+    private void buildWordFileMap() {
+        wordInFilesMap.clear();
+        DirectoryResource dirResource = new DirectoryResource();
+        for (File file : dirResource.selectedFiles()) {
+            addWordsFromFile(file);
+        }
+    }
+
+    private int maxNumber() {
+        //returns the maximum number of files any word appears in, considering
+        // all words from a group of files.
+        int highest = 0;
+        for (String word : wordInFilesMap.keySet()) {
+            ArrayList<String> currentFileList = wordInFilesMap.get(word);
+            int currentNum = currentFileList.size();
+            if (currentNum > highest) {
+                highest = currentNum;
+            }
+        }
+        return highest;
+    }
+
+    private ArrayList<String> wordsInNumFiles(int number) {
+        //returns an ArrayList of words that appear in exactly number files
+        ArrayList<String> wordList = new ArrayList<String>();
+        for (String word : wordInFilesMap.keySet()) {
+            ArrayList<String> currentList = wordInFilesMap.get(word);
+            int currentFileCount = currentList.size();
+            if (currentFileCount == number) {
+                wordList.add(word);
+            }
+        }
+        return wordList;
+    }
+
+    private void printFilesIn(String word) {
+        //prints the names of the files this word appears in, one filename per line
+        ArrayList<String> fileNames = wordInFilesMap.get(word);
         for (int index = 0; index < fileNames.size(); index++) {
             System.out.println(fileNames.get(index));
+
         }
-    
-  }
-    
-  public void test(){  
-    buildWordFileMap();
-    int maximum = maxNumber();
-    //ArrayList<String> TestList = wordsInNumFiles(maximum);
-    ArrayList<String> TestList = wordsInNumFiles(4);
-    System.out.println("The maximum number of files word is in: "+maximum +" and there are "+TestList.size());
-    for (int k =0;k< TestList.size(); k++)
-    {
-      System.out.println("All the words in the files "+TestList.get(k)+"");
     }
-    System.out.println("\t");
-    
-    for (int k =0;k <TestList.size();k++){
-        System.out.println("Filenames where the words are ");
-        printFilesIn(TestList.get(k));
+
+    private int countWords() {
+        int count = 0;
+        for (String word : wordInFilesMap.keySet()) {
+            List<String> currentList = wordInFilesMap.get(word);
+            count += currentList.size();
+        }
+        return count;
     }
-    //System.out.println("\n");
-    //printFilesIn("word");
+
+    public void tester() {
+        //call buildWordFileMap to select files and build HashMap of words
+        buildWordFileMap();
+
+        // ++ Calc count of files in all files
+        int countAllWordsInAllFiles = countWords();
+        System.out.println("\nCount of all words that appear in all files: " + countAllWordsInAllFiles);
+        // -- Calc count of files in all files
     }
-    
-  }
+
+    public static void main(String[] args) {
+        new WordsInFiles().tester();
+    }
+}
