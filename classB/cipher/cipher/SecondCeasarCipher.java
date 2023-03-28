@@ -1,6 +1,5 @@
 package cipher;
-import edu.duke.FileResource;
-
+edu.duke.FileResource.java;
 
 public class SecondCeasarCipher {
 private int key;
