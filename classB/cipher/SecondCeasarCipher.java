@@ -1,4 +1,4 @@
-package cipher;
+
 edu.duke.FileResource.java;
 
 public class SecondCeasarCipher {

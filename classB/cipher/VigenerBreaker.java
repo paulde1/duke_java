@@ -1,6 +1,4 @@
-import java.util.*;
-import edu.duke.*;
-
+import java.util.*;:
 public class VigenereBreaker {
     public String sliceString(String message, int whichSlice, int totalSlices) {
         StringBuilder slicedMessage = new StringBuilder();
