@@ -1,4 +1,4 @@
-package cipher;
+
 import edu.duke.FileResource;
 import java.util.*;
 
@@ -7,9 +7,6 @@ public class CeasarCipher {
 	private String alphabet;
 	private String shiftedAlphabet;
 	private int mainKey;
-		
-
-	public String CaesarCipher(int key){
 
 	public String CaesarCipher(int key){
 
@@ -130,6 +127,7 @@ public class CeasarCipher {
        System.out.println(decrypted);
         System.out.println(encrypt("Today Imet some of the most amazing people I have ever known, AMAZING!", 15));
         System.out.println(encryptTwoKeys("In the afternoon, I'm goin to go for a walk and have a quick chat with everyone. SAY HI!!", 8,21));
-    }
-    
+    	}
+      }
+   }
 }
