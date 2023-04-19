@@ -20,5 +20,10 @@ public class QuakeSort {
         in.set(minimumIndex, qi);
     }
  }
- 
+ public void testSort () {
+    EarthQuakeParser parser = new EarthQuakeParser();
+    String source = "data/nov20quakedata.atom";
+    ArrayList < QuakeEntry> list = parser.read(source);
+    sortByMagnitude(source);
+ }
 }
