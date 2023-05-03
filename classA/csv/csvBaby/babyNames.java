@@ -3,7 +3,7 @@ import edu.duke.*;
 import org.apache.commons.csv.*;
 import java.io.*;
 
-public class babyNames {
+public class babyNames<FileResource> {
     public void totalBirths(FileResource fr) {
         int totalBirths = 0;
         int totalBoys = 0;
@@ -31,13 +31,13 @@ public class babyNames {
     }
     
     public int countNames(String name, int count) {
-        String temp = null;
-        String temp1 = null;
-        if(temp == null) {
-            temp = name;
+        String tempA = null;
+        String tempB = null;
+        if(tempA == null) {
+            tempA = name;
         }
-        if(temp1 != temp) {
-            temp1 = temp;
+        if(tempB != tempA) {
+            tempB = tempA;
             count++;
         }
         return count;
