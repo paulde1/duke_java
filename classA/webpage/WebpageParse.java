@@ -11,7 +11,7 @@ public class WebpageParse {
                 int beg = item.lastIndexOf("\"",pos); //find the specified string backwards
                 int end = item.indexOf("\"", pos+1); //finds the specified string forwards
                 System.out.println(item.substring(beg+1,end));
-                // System.out.println(item.substring(beg,end));
+                System.out.println(item.substring(beg,end));
 
             }
        	}

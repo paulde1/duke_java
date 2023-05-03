@@ -44,12 +44,12 @@ public class hottestDay {
         FileResource fr = new FileResource("data/2015/weather-2015-01-02.csv");
         CSVRecord largest = hottestHourInFile(fr.getCSVParser());
         System.out.println("Hottest Temperature was: " + largest.get("TemperatureF") +
-                            " at " + largest.get("TimeEST"));
+     " at " + largest.get("TimeEST"));
     }
     
     public void testHottestInManyDays() {
         CSVRecord largest = hottestInManyDays();
         System.out.println("Hottest Temperature was: " + largest.get("TemperatureF") +
-                            " at " + largest.get("DateUTC"));
+         " at " + largest.get("DateUTC"));
     }
 }

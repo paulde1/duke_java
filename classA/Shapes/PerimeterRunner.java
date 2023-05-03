@@ -60,15 +60,15 @@ return numPoints;
         return largestX;
     }
 
-    //for (Point p : s.getPoints()) {
-    // if (p.getX() > 0) {
+    for (Point p : s.getPoints()) {
+    if (p.getX() > 0) {
       
-    //     if (p.getY() < 0) {
-    //       tmp = tmp + 1;
-    //     }
-    //   }
-    // }
-    // return tmp / getNumPoints(s);   
+        if (p.getY() < 0) {
+          tmp = tmp + 1;
+        }
+      }
+    }
+    return tmp / getNumPoints(s);   
 
     public double getLargestPerimeterMultipleFiles() {
         FileResource fr = new FileResource(f);
