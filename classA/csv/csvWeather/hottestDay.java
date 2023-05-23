@@ -5,15 +5,11 @@ import java.io.*;
 
 public class hottestDay {
      public CSVRecord hottestHourInFile(CSVParser parser) {
-        //start with largestSoFar as nothing
-        CSVRecord largestSoFar = null;
-        //For each row (currentRow) in the CSV File
-        for(CSVRecord currentRow : parser) {
-            //If largestSoFar is nothing
-            largestSoFar = getLargestOfTwo(currentRow, largestSoFar);
+        CSVRecord largestSoFar = null;   //start with largestSoFar as nothing
+        for(CSVRecord currentRow : parser) {   //For each row (currentRow) in the CSV File
+            largestSoFar = getLargestOfTwo(currentRow, largestSoFar); //If largestSoFar is nothing
         }
-        //largestSoFar is our answer
-        return largestSoFar;
+        return largestSoFar //largestSoFar is our answer
     }
     
     public CSVRecord hottestInManyDays() {
