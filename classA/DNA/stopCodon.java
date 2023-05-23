@@ -40,7 +40,6 @@ public class stopCodon {
             if(currentGene.isEmpty()) {
                 break;
             }
-            //System.out.println(currentGene);
             geneList.add(currentGene);
             startIndex = dna.indexOf(currentGene, startIndex + 1) + currentGene.length();
         }
@@ -99,10 +98,8 @@ public class stopCodon {
                 longest = genes;
             }
         }
-        
         System.out.println("Longest Gene is: " + longest);
     }
-    
     public void testProcessGenes() {
         FileResource fr = new FileResource("GRch38dnapart.fa");
         String dna = fr.asString();

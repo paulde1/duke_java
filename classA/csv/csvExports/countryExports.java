@@ -1,8 +1,6 @@
 import edu.duke.*;
 import org.apache.commons.csv.*;
-
 public class WhichCountriesExport {
-	
 	/** The method prints the number of countries that export exportItem */
 	public static void numberOfExporters(CSVParser parser, String exportItem) {
 		//for each row in the CSV File
@@ -35,7 +33,6 @@ public class WhichCountriesExport {
 			}
 		}
 	}
-	
 	/** This method prints a string of information about the country or prints “NOT FOUND” if there is no information about the country */
 	public static void countryInfo(CSVParser parser, String country) {		
 		boolean found = false;
@@ -53,7 +50,6 @@ public class WhichCountriesExport {
 		}
 		if (!found) System.out.println("NOT FOUND");
 	}
-	
 	/** This method prints the names of countries and their Value amount for all countries whose Value (dollars) string is longer than the amount string. */
 	public static void bigExporters(CSVParser parser, String amount) {
 		//for each row in the CSV File
@@ -69,7 +65,6 @@ public class WhichCountriesExport {
 			}
 		}
 	}
-	
 	// test
 	public static void tester() {
 		FileResource fr = new FileResource();
@@ -82,7 +77,6 @@ public class WhichCountriesExport {
 		parser = fr.getCSVParser();
 		bigExporters(parser, "$999,999,999");
 	}
-	
 	// demo
 	public static void main(String[] args) {
 		tester();
