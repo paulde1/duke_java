@@ -40,7 +40,6 @@ public class coldestDay {
                     filename = f.getName();
                 }
             }
-            
         }
         return filename;
     }
@@ -100,10 +99,9 @@ public class coldestDay {
             String humidityStr = currentRow.get("Humidity");
             if(!humidityStr.equalsIgnoreCase("N/A")) {
                 double humidity = Double.parseDouble(humidityStr);
-                
+        
                 if(humidity >= value) {
                     double temp = Double.parseDouble(currentRow.get("TemperatureF"));
-                    
                     System.out.println(humidity + " " + temp);
                     sum += temp;
                     counter ++;
@@ -118,12 +116,11 @@ public class coldestDay {
         FileResource fr = new FileResource();
         CSVRecord coldest = coldestHourInFile(fr.getCSVParser());
         System.out.println("Coldest Temperature was: " + coldest.get("TemperatureF") +
-                            " at " + coldest.get("TimeEDT"));
+         " at " + coldest.get("TimeEDT"));
     }
     
     public void testFileWithColdestTemperature() {
         String filename = fileWithColdestTemperature();
-        //CSVRecord coldest = 
         FileResource fr = new FileResource("nc_weather/2013/" + filename);
         CSVRecord coldest = coldestHourInFile(fr.getCSVParser());
         System.out.println("Coldest day was in file: " + filename);
@@ -146,7 +143,7 @@ public class coldestDay {
     public void testLowestHumidityInManyFiles() {
         CSVRecord lowest = lowestHumidityInManyFiles();
         System.out.println("Lowest Humidity was " + lowest.get("Humidity") +
-                            " at " + lowest.get("DateUTC"));
+        " at " + lowest.get("DateUTC"));
     }
     
     public void testAverageTemperatureInFile() {
