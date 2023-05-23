@@ -66,9 +66,9 @@ return numPoints;
         if (p.getY() < 0) {
           tmp = tmp + 1;
         }
-      }
+    getNumPoints(s);   
+        }
     }
-    return tmp / getNumPoints(s);   
 
     public double getLargestPerimeterMultipleFiles() {
         FileResource fr = new FileResource(f);
