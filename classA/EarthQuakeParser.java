@@ -12,7 +12,6 @@ import org.xml.sax.SAXException;
 
 public class EarthQuakeParser {
     public EarthQuakeParser() {
-        // TODO Auto-generated constructor stub
     }
 
     public ArrayList<QuakeEntry> read(String source) {
@@ -20,21 +19,13 @@ public class EarthQuakeParser {
 
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-
-            //Document document = builder.parse(new File(source));
-            //Document document = builder.parse("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom");
-            Document document = null;
-
             if (source.startsWith("http")){
                 document = builder.parse(source);
             }
             else {
                 document = builder.parse(new File(source));
             }
-            //Document document = builder.parse("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom");
-
             NodeList nodeList = document.getDocumentElement().getChildNodes();
-
             ArrayList<QuakeEntry> list = new ArrayList<QuakeEntry>();
 
             for(int k=0; k < nodeList.getLength(); k++){
